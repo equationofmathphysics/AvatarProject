@@ -1,0 +1,42 @@
+appId: com.avatar-project.app
+productName: Avatar Project
+copyright: Copyright © 2026 Avatar Project
+directories:
+  output: release
+  buildResources: resources
+files:
+  - '**/*'
+extraResources:
+  - from: 'resources'
+    to: 'resources'
+  - from: 'src/python'
+    to: 'python'
+  - '!**/*.map'
+  - '!**/*.spec.js'
+  - '!**/node_modules/**/*'
+
+win:
+  target:
+    - nsis
+  icon: resources/icons/icon.ico
+
+mac:
+  target: dmg
+  icon: resources/icons/icon.icns
+  hardenedRuntime: true
+  entitlements: build/entitlements.mac.plist
+  entitlementsInherit: build/entitlements.mac.plist
+
+linux:
+  target:
+    - AppImage
+    - deb
+    - rpm
+  icon: resources/icons
+  category: Utility
+  synopsis: Avatar Project - 你的数字工作伙伴
+  description: 通过被动观察你的电脑行为，自动抽象你的工作模式
+
+publish:
+  provider: generic
+  url: 'https://github.com/avatar-project/releases'
